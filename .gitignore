@@ -22,3 +22,12 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+
+# ignoring config files
+infra/kafka-producer/producer.props
+infra/kafka-producer/rand_nums.txt
+infra/kafka-producer/secrets.env
+
+
+# dotfiles
+.DS_Store
