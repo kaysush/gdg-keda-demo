@@ -1,17 +1,17 @@
 #!/bin/sh
-gcloud beta container --project "neural-land-324105" clusters create "keda-demo-cluster-clone-1" \
+gcloud beta container --project "neural-land-324105" clusters create "keda-demo-cluster" \
 --zone "us-central1-c" \
 --no-enable-basic-auth \
 --cluster-version "1.26.5-gke.1200" \
 --release-channel "None" \
---machine-type "e2-medium" \
+--machine-type "e2-standard-2" \
 --image-type "COS_CONTAINERD" \
 --disk-type "pd-balanced" \
 --disk-size "50" \
 --metadata disable-legacy-endpoints=true \
 --scopes "https://www.googleapis.com/auth/devstorage.read_only","https://www.googleapis.com/auth/logging.write","https://www.googleapis.com/auth/monitoring","https://www.googleapis.com/auth/servicecontrol","https://www.googleapis.com/auth/service.management.readonly","https://www.googleapis.com/auth/trace.append" \
 --max-pods-per-node "110" \
---num-nodes "3" \
+--num-nodes "4" \
 --logging=SYSTEM,WORKLOAD \
 --monitoring=SYSTEM \
 --enable-ip-alias \
