@@ -9,7 +9,6 @@ spec:
   scaleTargetRef:
     name: kafka-consumer-deployment
   pollingInterval: 10
-  lagThreshold: 1000
   minReplicaCount: 1
   maxReplicaCount: 10  # Max can go upto num of partitions you have in the topic
   triggers:
@@ -18,7 +17,7 @@ spec:
         consumerGroup: keda-hpa
         bootstrapServers: <YOUR-BROKER-HOST>
         topic: keda-demo-topic
-        lagThreshold: "10"
+        lagThreshold: "1000"
         offsetRestPolicy: latest
         sasl: plaintext
         tls: enable
