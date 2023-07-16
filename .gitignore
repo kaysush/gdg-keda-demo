@@ -33,5 +33,5 @@ infra/kafka-producer/secrets.env
 .DS_Store
 
 # test reports
-consumer/target/maven-status/**
-consumer/target/surefire-reports/**
+consumer/target/**/**
+consumer/target/**/**
