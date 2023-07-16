@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kafka-consumer-deployment
+  namespace: hpa-default
+  labels:
+    app: kafka-consumer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kafka-consumer
+  template:
+    metadata:
+      labels:
+        app: kafka-consumer
+    spec:
+      containers:
+        - name: kafka-consumer
+          image: kaysush/gdg-keda-kafka-consumer:0.1
+          imagePullPolicy: Always
+          resources:
+            requests:
+              memory: "1Gi"
+              cpu: "500m"
+            limits:
+              memory: "2Gi"
+              cpu: "1000m"
+          env:
+            - name: API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: api-secrets
+                  key: api_key
+            - name: API_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: api-secrets
+                  key: api_secret
+            - name: KAFKA_TOPIC
+              value: "keda-demo-topic"
+            - name: CONSUMER_GROUP_ID
+              value: default-hpa
+            - name: BOOTSTRAP_SERVER
+              valueFrom:
+                secretKeyRef:
+                  name: api-secrets
+                  key: bootstrap_server

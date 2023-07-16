@@ -5,9 +5,8 @@ set -e
 source secrets.env
 
 TOPIC=keda-demo-topic
-TOTAL_RECORDS=1000
-MSGS_PER_SEC=10
-RECORD_SIZE_IN_BYTES=
+TOTAL_RECORDS=100000
+MSGS_PER_SEC=100
 CONFIG_FILE=producer.props
 KAFKA_DIR=/Users/sk758f/kafka_2.12-3.4.0/bin
 PAYLOAD_FILE=rand_nums.txt
@@ -25,7 +24,7 @@ EOF
 
 if [[ -f "$PAYLOAD_FILE" ]]; then
     echo "$PAYLOAD_FILE exists. Truncating it."
-    echo -n > $PAYLOAD_FILE
+    > $PAYLOAD_FILE
 fi
 
 echo 'Creating payload file'
