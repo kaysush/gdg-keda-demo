@@ -4,6 +4,8 @@ set -e
 
 gcloud container clusters get-credentials keda-demo-cluster --zone us-central1-c --project neural-land-324105
 
+echo 'Deploying KEDA to the cluster'
+kubectl apply -f https://github.com/kedacore/keda/releases/download/v2.10.1/keda-2.10.1.yaml
 
 
 echo 'Starting producer deployment...'
