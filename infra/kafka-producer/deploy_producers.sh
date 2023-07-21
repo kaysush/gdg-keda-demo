@@ -15,13 +15,13 @@ pushd $K8S_BASE_DIR
 
 echo 'Deploying HPA based producer'
 kubectl create namespace hpa-default --dry-run -o yaml | kubectl apply -f -
-kubectl create secret generic api-secrets --namespace=hpa-default --from-literal=api_key=$API_KEY --from-literal=api_secret=$API_SECRET --from-literal=bootstrap_server=$BOOTSTRAP_SERVER
+kubectl create secret generic api-secrets --namespace=hpa-default --from-literal=api_key=$API_KEY --from-literal=api_secret=$API_SECRET --from-literal=bootstrap_server=$BOOTSTRAP_SERVER --dry-run -o yaml | kubectl apply -f -
 kubectl apply -f hpa/deployment.yaml
 kubectl apply -f hpa/hpa.yaml
 
 echo 'Deploying KEDA based producer'
 kubectl create namespace hpa-keda --dry-run -o yaml | kubectl apply -f -
-kubectl create secret generic api-secrets --namespace=hpa-keda --from-literal=api_key=$API_KEY --from-literal=api_secret=$API_SECRET --from-literal=bootstrap_server=$BOOTSTRAP_SERVER
+kubectl create secret generic api-secrets --namespace=hpa-keda --from-literal=api_key=$API_KEY --from-literal=api_secret=$API_SECRET --from-literal=bootstrap_server=$BOOTSTRAP_SERVER --dry-run -o yaml | kubectl apply -f -
 kubectl apply -f keda/deployment.yaml
 kubectl apply -f keda/triggerAuthentication.yaml
 kubectl apply -f keda/scaledObject.yaml
