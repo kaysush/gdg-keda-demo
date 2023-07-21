@@ -2,6 +2,8 @@
 
 set -e
 
+gcloud container clusters get-credentials keda-demo-cluster --zone us-central1-c --project neural-land-324105
+
 echo 'Starting producer deployment...'
 K8S_BASE_DIR=../../k8s
 
