@@ -4,11 +4,22 @@ set -e
 
 source secrets.env
 
+echo 'Downloading Kafka if needed'
+
+if [[ -d "$PAYLOAD_FILE" ]]; then
+echo 'Kafka installation found... Skipping'
+else
+    wget -o https://downloads.apache.org/kafka/3.5.0/kafka_2.12-3.5.0.tgz
+    tar -xvf kafka_2.12-3.5.0.tgz
+fi
+
+
+
 TOPIC=keda-demo-topic
 TOTAL_RECORDS=100000
 MSGS_PER_SEC=100
 CONFIG_FILE=producer.props
-KAFKA_DIR=/Users/sk758f/kafka_2.12-3.4.0/bin
+KAFKA_DIR=kafka_2.12-3.5.0/bin
 PAYLOAD_FILE=rand_nums.txt
 
 echo 'Creating producer config'

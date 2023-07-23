@@ -6,7 +6,7 @@ gcloud beta container --project "neural-land-324105" clusters create "keda-demo-
 --release-channel "None" \
 --machine-type "e2-standard-2" \
 --image-type "COS_CONTAINERD" \
---disk-type "pd-balanced" \
+--disk-type "pd-balanced" \ð
 --disk-size "50" \
 --metadata disable-legacy-endpoints=true \
 --scopes "https://www.googleapis.com/auth/devstorage.read_only","https://www.googleapis.com/auth/logging.write","https://www.googleapis.com/auth/monitoring","https://www.googleapis.com/auth/servicecontrol","https://www.googleapis.com/auth/service.management.readonly","https://www.googleapis.com/auth/trace.append" \

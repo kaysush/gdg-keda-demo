@@ -35,3 +35,5 @@ infra/kafka-producer/secrets.env
 # test reports
 consumer/target/**/**
 consumer/target/**/**
+consumer/.idea/sonarlint/
+
